@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PythonRunner } from '@/components/python-runner';
 import type { Lesson } from '@/lib/lessons';
 
 export function LessonContent({ lesson }: Readonly<{ lesson: Lesson }>) {
@@ -45,17 +46,7 @@ export function LessonContent({ lesson }: Readonly<{ lesson: Lesson }>) {
         })}
       </div>
 
-      <section className="mt-10 rounded-[1.7rem] border border-lab-blue/25 bg-lab-panel/90 p-5">
-        <p className="font-mono text-xs uppercase tracking-[0.22em] text-lab-blue">Starter code</p>
-        <pre className="mt-4 overflow-x-auto rounded-2xl bg-[#02040a] p-5 font-mono text-sm leading-7 text-lab-ink">
-          <code>{lesson.starterCode}</code>
-        </pre>
-        {lesson.expectedOutput ? (
-          <div className="mt-4 rounded-2xl border border-lab-green/20 bg-lab-green/10 p-4 font-mono text-sm text-lab-green">
-            Expected output: {lesson.expectedOutput}
-          </div>
-        ) : null}
-      </section>
+      <PythonRunner lesson={lesson} />
     </article>
   );
 }
